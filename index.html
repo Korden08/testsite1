@@ -12,7 +12,15 @@
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;display:flex;justify-content:center;padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
 main{width:100%;max-width:420px}
-.card{background:var(--card);border-radius:28px;padding:32px 24px 24px;text-align:center;box-shadow:0 1px 0 var(--line)}
+.card{background:var(--card);border-radius:28px;overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.hero{position:relative;aspect-ratio:4/5;background:var(--accent);display:flex;align-items:flex-end;color:#fff}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .ini{position:absolute;inset:0;display:grid;place-items:center;font-size:96px;font-weight:800;color:var(--accent-ink);opacity:.9}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,16,28,.82) 0%,rgba(10,16,28,0) 55%)}
+.hero .cap{position:relative;z-index:1;padding:24px;text-align:left}
+.hero h1{margin:0 0 4px;font-size:28px;line-height:1.15;color:#fff}
+.hero .role{margin:0;color:#fff;opacity:.9;font-weight:600}
+.body{padding:22px 24px 24px;text-align:center}
 .photo{width:128px;height:128px;border-radius:50%;object-fit:cover;margin:0 auto 20px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-size:44px;font-weight:800;overflow:hidden}
 .photo img{width:100%;height:100%;object-fit:cover}
 h1{margin:0 0 6px;font-size:26px;line-height:1.2;font-weight:800}
@@ -61,7 +69,9 @@ h1{margin:0 0 6px;font-size:26px;line-height:1.2;font-weight:800}
     document.title=e.name+' — '+e.role;
     var links=(e.links||[]).filter(function(l){return l.url}).map(function(l){
       return '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.label)+'</a>'}).join('');
-    app.innerHTML='<a class="back" href="#">← Все сотрудники</a><section class="card">'+av(e).replace('class="photo"','class="photo" style="width:128px;height:128px;font-size:44px;margin:0 auto 20px"')+'<h1>'+esc(e.name)+'</h1><p class="role">'+esc(e.role)+'</p><p class="bio">'+esc(e.bio)+'</p><nav class="links">'+links+'</nav></section>';
+    var ini=e.name.split(' ').map(function(w){return w[0]}).slice(0,2).join('');
+    var pic=e.photo?'<img src="'+esc(String(e.photo).replace(/^\/+/,''))+'" alt="'+esc(e.name)+'">':'<div class="ini">'+esc(ini)+'</div>';
+    app.innerHTML='<a class="back" href="#">← Все сотрудники</a><section class="card"><div class="hero">'+pic+'<div class="cap"><h1>'+esc(e.name)+'</h1><p class="role">'+esc(e.role)+'</p></div></div><div class="body"><p class="bio">'+esc(e.bio)+'</p><nav class="links">'+links+'</nav></div></section>';
     window.scrollTo(0,0);
   }
   fetch('employees.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(d){
