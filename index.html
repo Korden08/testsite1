@@ -47,7 +47,7 @@ h1{margin:0 0 6px;font-size:26px;line-height:1.2;font-weight:800}
   function id(){var h=decodeURIComponent(location.hash.replace('#','')).trim();
     return h||new URLSearchParams(location.search).get('id')||''}
   function av(e){var i=e.name.split(' ').map(function(w){return w[0]}).slice(0,2).join('');
-    return e.photo?'<div class="photo"><img src="'+esc(e.photo)+'" alt=""></div>':'<div class="photo">'+esc(i)+'</div>'}
+    return e.photo?'<div class="photo"><img src="'+esc(String(e.photo).replace(/^\/+/,''))+'" alt=""></div>':'<div class="photo">'+esc(i)+'</div>'}
   function home(list){
     document.title='Наша команда';
     app.innerHTML='<header class="top"><h1>Наша команда</h1><p>Выберите сотрудника</p></header><nav class="list">'+
