@@ -3,7 +3,7 @@ backend:
   repo: korden08/testsite1   # например: aibek/cards
   branch: main
 media_folder: photos
-public_folder: /photos
+public_folder: photos
 locale: ru
 collections:
   - name: staff
