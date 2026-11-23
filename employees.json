@@ -1,0 +1,32 @@
+{
+  "employees": [
+    {
+      "id": "ivanov",
+      "name": "Иван Иванов",
+      "role": "Директор",
+      "bio": "Более 10 лет в отрасли. Отвечает за стратегию и развитие компании.",
+      "photo": "",
+      "links": [
+        {"label": "Сайт компании", "url": "https://example.com"},
+        {"label": "Instagram", "url": "https://instagram.com/example"},
+        {"label": "WhatsApp", "url": "https://wa.me/996000000000"},
+        {"label": "Telegram", "url": "https://t.me/example"},
+        {"label": "Позвонить", "url": "tel:+996000000000"}
+      ]
+    },
+    {
+      "id": "petrova",
+      "name": "Айгуль Петрова",
+      "role": "Менеджер по работе с клиентами",
+      "bio": "Поможет подобрать решение и ответит на любые вопросы.",
+      "photo": "",
+      "links": [
+        {"label": "Сайт компании", "url": "https://example.com"},
+        {"label": "Instagram", "url": "https://instagram.com/example"},
+        {"label": "WhatsApp", "url": "https://wa.me/996000000001"},
+        {"label": "Telegram", "url": "https://t.me/example"},
+        {"label": "Позвонить", "url": "tel:+996000000001"}
+      ]
+    }
+  ]
+}

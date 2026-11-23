@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: ВАШ_ЛОГИН/ИМЯ_РЕПОЗИТОРИЯ   # например: aibek/cards
+  branch: main
+media_folder: photos
+public_folder: /photos
+locale: ru
+collections:
+  - name: staff
+    label: Сотрудники
+    files:
+      - name: employees
+        label: Список сотрудников
+        file: employees.json
+        fields:
+          - label: Сотрудники
+            name: employees
+            widget: list
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - {label: "Ссылка (латиницей, без пробелов)", name: id, widget: string, hint: "Например ivanov. Ссылка будет: сайт/#ivanov"}
+              - {label: ФИО, name: name, widget: string}
+              - {label: Должность, name: role, widget: string}
+              - {label: Биография, name: bio, widget: text}
+              - {label: Фото, name: photo, widget: image, required: false}
+              - label: Кнопки
+                name: links
+                widget: list
+                max: 5
+                fields:
+                  - {label: Название кнопки, name: label, widget: string}
+                  - {label: Ссылка, name: url, widget: string}
