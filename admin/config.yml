@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: aibek/cards   # например: aibek/cards
+  repo: korden08/testsite1   # например: aibek/cards
   branch: main
 media_folder: photos
 public_folder: /photos
